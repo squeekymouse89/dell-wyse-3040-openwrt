@@ -115,27 +115,29 @@ binutils bzip2 diff find flex gawk gcc-6+ getopt grep
 install libc-dev libz-dev make4.1+ perl python3.6+ rsync 
 subversion unzip which
 ```
-**Install:**
-
-I used directions from [OpenWRT Build System Usage](https://openwrt.org/docs/guide-developer/toolchain/use-buildsystem).
-
+**Install for Ubuntu 22.04.1 LTS Server:**
 ```
-git clone git@github.com:openwrt/openwrt.git
-cd openwrt
+sudo apt update
+sudo apt install build-essential gawk gcc-multilib flex git gettext libncurses5-dev libssl-dev python3-distutils rsync unzip zlib1g-dev file
+rm -rf openwrt
+git clone https://github.com/openwrt/openwrt
+#cd openwrt
+git pull
 # list tags
-git tag
+#git tag
 # I'm using the latest rc as of today
-git checkout v22.03.0-rc3
+git checkout v21.02.3
 
 # Update/install the feeds
 ./scripts/feeds update -a
 ./scripts/feeds install -a
 
 # Download my config
-wget "https://raw.githubusercontent.com/pjobson/dell-wyse-3040-openwrt/main/config/config" -O .config
+wget "https://raw.githubusercontent.com/squeekymouse89/dell-wyse-3040-openwrt/main/config/config" -O .config
 
 # Otherwise make your own
 # Make your config
+cd openwrt
 make menuconfig
 # Make your kernel config
 make kernel_menuconfig
@@ -146,6 +148,7 @@ make world -j$(nproc) V=sc
 # You can find the builds in: openwrt/bin/
 # This includes all the packages.
 find . -name "openwrt-x86-64-generic-ext4-combined-efi.img.gz"
+
 ```
 
 Gunzip and copy the `openwrt-x86-64-generic-ext4-combined-efi.img.gz` and copy `openwrt-x86-64-generic-ext4-combined-efi.img` file to a USB stick, boot the device off a secondary drive with linux on it, as described below.
