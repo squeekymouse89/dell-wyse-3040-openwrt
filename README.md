@@ -188,85 +188,10 @@ From here, I used gparted to resize the system partitions, because I couldn't se
 
 ##### My Unofficial Builds
 
-* [openwrt.atom.build.20220531.img.gz](https://github.com/pjobson/openwrt-dell-wyze-3040/raw/main/builds/openwrt.atom.build.20220531.img.gz)
-* [openwrt.atom.build.20220528.img.gz](https://github.com/pjobson/openwrt-dell-wyze-3040/raw/main/builds/openwrt.atom.build.20220528.img.gz)
+* [openwrt.wyse.withqemu.img.gz](https://)
 
 **Installing:**
 
-* You need two USB sticks, one you should put some linux distribution on, the other you should format.  I formatted mine to ext4, but it probably doesn't matter.
-* Download a build.
-* `gunzip openwrt.atom.build.img.*.gz`
-* Copy openwrt.atom.build.########.img to your second USB stick.
-* Put your Linux boot stick into one of the USB2.0 slots.  
-* Put the stick with the OpenWRT image on it in the USB3.1 slot.
-* Boot the unit hitting F12 to get to the boot menu, then select the linux boot stick.
-* Open a terminal.
-* Find your EMMC with: `sudo fdisk -l`
-* Both of mine were: `/dev/mmcblk0`
-* Find your img file, if you're using mint it'll be in media: `ls -laR /media/mint/`
-* Write the image using `dd`.
-* `sudo dd if=/path/to/openwrt.atom.build.img of=/dev/mmcblk0 bs=4096 status=progress`
-* Wait for awhile.
-* Reboot the device removing all USB sticks. I just power cycle it, because I don't care.
-* Setup your network as I desribe in this gist: [OpenWRT on x86_64 - First Boot](https://gist.github.com/pjobson/3584f36dadc8c349fac9abf1db22b5dc#first-boot)
-* You can now open LUCI in your browser by going to whatever IP you set the unit to.
+I used a windows 10 boot cd and balena etcher on a usb stick to image my wyse machine. I used rufus to create a windows 10 install then install balana enter to the same stick.
 
-#### ThinLinux
-
-Dell has their own linux distributino for the Wyze 3040 called ThinLinux.  You can download it from their [Support Site](https://www.dell.com/support/home/en-us/drivers/driversdetails?driverid=jrr5m).  The file is `2.2.0.00_3040_16GB_merlin.exe` which you can extract the `img` files from with 7zip, like: `7z x 2.2.0.00_3040_16GB_merlin.exe`.  I have not tested this and I probably won't.
-
-#### Mint
-
-[Linux Mint](https://linuxmint.com/) will boot off the USB stick and I have used the Live USB stick to mess around with the device.  The minimum system requirements for Mint are 2GB of RAM and 20GB of disk space.  The installer will crash shortly after selecting keyboard type.
-
-#### antiX Linux
-
-[antiX](https://antixlinux.com/) is probably a better option as the minimum system requirements are 256MB RAM and 5GB HDD.  This seems to install and run fine, you will need to write the ISO to a USB with [live-usb-maker](https://github.com/MX-Linux/lum-qt-appimage/releases) as the default antiX distribution ISO is legacy boot only.
-
-#### VyOS
-
-This person has done some work with VyOS. [https://blog.kroy.io/2020/01/17/the-baby-wyse-the-dell-3040/](https://blog.kroy.io/2020/01/17/the-baby-wyse-the-dell-3040/)
-
-## Images
-
-### Device
-
-**External**
-
-![Front](https://raw.githubusercontent.com/pjobson/openwrt-dell-wyze-3040/main/img/front.jpg)
-![Rear](https://raw.githubusercontent.com/pjobson/openwrt-dell-wyze-3040/main/img/rear.jpg)
-![Angle](https://raw.githubusercontent.com/pjobson/openwrt-dell-wyze-3040/main/img/angle.jpg)
-
-**Board**
-
-![Top](https://raw.githubusercontent.com/pjobson/openwrt-dell-wyze-3040/main/img/unit-top-full.jpg)
-![Bottom](https://raw.githubusercontent.com/pjobson/openwrt-dell-wyze-3040/main/img/unit-bottom-full.jpg)
-
-**CPU**
-
-![CPU](https://raw.githubusercontent.com/pjobson/openwrt-dell-wyze-3040/main/img/cpu.jpg)
-
-**EMMC**
-
-![EMMC](https://raw.githubusercontent.com/pjobson/dell-wyse-3040-openwrt/main/img/emmc-skhynix-805a.jpg)
-
-**SDIO**
-
-![SDIO](https://raw.githubusercontent.com/pjobson/openwrt-dell-wyze-3040/main/img/sdio-m2.jpg)
-
-**Clear CMOS**
-
-![Clear CMOS](https://raw.githubusercontent.com/pjobson/openwrt-dell-wyze-3040/main/img/clear-cmos.jpg)
-
-**Clear Passwords**
-
-![Clear Passwords](https://raw.githubusercontent.com/pjobson/openwrt-dell-wyze-3040/main/img/passwd-clear.jpg)
-
-### OpenWRT
-
-![](https://raw.githubusercontent.com/pjobson/openwrt-dell-wyze-3040/main/img/neofetch.png)
-![](https://raw.githubusercontent.com/pjobson/openwrt-dell-wyze-3040/main/img/luci_status.png)
-
-### antiX
-
-![](https://raw.githubusercontent.com/pjobson/openwrt-dell-wyze-3040/main/img/antix-wyse-3040.png)
+I then simply used Shift F10 to open a cmd prompt in setup and execute etcher to flash my device.
