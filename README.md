@@ -1,7 +1,6 @@
 # Dell Wyze 3040
 
-This is mainly about building and installing OpenWRT on the Wyse 3040. I have included as much additional information as possible.
-
+This is mainly about building and installing OpenWRT on the Wyse 3040. This is an altered fork that included virtualisation, qemu (wuth usb passthrough) and USB external storage support.
 ## TOC
 
 - [Dell Wyze 3040](#dell-wyze-3040)
