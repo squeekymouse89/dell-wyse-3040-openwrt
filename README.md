@@ -106,9 +106,9 @@ The current build of OpenWRT does not install on the Wyze.  From what I understa
 ##### Building
 
 I'm not an expert on building OpenWRT, this is the first custom build I've done.  I may be missing some stuff or could be wrong about any amount of this.  Feel free to drop a comment/bug/pull request.
-
-**Install for Ubuntu 22.04.1 LTS Server:**
 ```
+**Install for Ubuntu 22.04.1 LTS Server:**
+
 sudo apt update
 sudo apt install build-essential gawk gcc-multilib flex git gettext libncurses5-dev libssl-dev python3-distutils rsync unzip zlib1g-dev file
 rm -rf openwrt
