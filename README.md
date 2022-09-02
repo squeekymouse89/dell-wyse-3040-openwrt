@@ -150,42 +150,6 @@ find . -name "openwrt-x86-64-generic-ext4-combined-efi.img.gz"
 
 ```
 
-Gunzip and copy the `openwrt-x86-64-generic-ext4-combined-efi.img.gz` and copy `openwrt-x86-64-generic-ext4-combined-efi.img` file to a USB stick, boot the device off a secondary drive with linux on it, as described below.
-
-Open a terminal from your LiveUSB stick.
-
-```
-# Find your EMMC drive, mine is: /dev/mmcblk0
-sudo fdisk -l
-
-# Find the image
-find /media/mint -name openwrt-x86-64-generic-ext4-combined-efi.img
-
-# Write the image.
-sudo dd if=./openwrt-x86-64-generic-ext4-combined-efi.img of=/dev/mmcblk0 bs=512 status=progress
-
-# Use fdisk to show your partitions
-sudo fdisk -l
-
-# It'll probably show some partition errors, we will fix those now.
-# For some reason the img file has the partitions in a weird order.
-sudo gdisk /dev/mmcblk0
-        s - sort partitions
-        w - write table and exit
-        Y - Do you want to correct this problem?
-        Y - Do you want to proceed?
-
-# Should return
-# OK; writing new GUID partition table (GPT) to /dev/mmcblk0.
-# The operation has completed successfully.
-
-# fdisk should no longer show errors.
-sudo fdisk -l 
-```
-
-From here, I used gparted to resize the system partitions, because I couldn't seem to get it to go properly in gdisk, I probably just don't know how to use gdisk properly. DO NOT resize it to the full 8GB or it will not boot, keep slightly under 8GB.  I have no clue why.
-
-
 ##### My Unofficial Builds
 
 * [openwrt.wyse.withqemu.img.gz](https://)
